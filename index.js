@@ -11,6 +11,7 @@ var {
   Easing,
   BackAndroid,
   Platform,
+  I18nManager
 } = require('react-native');
 
 var screen = Dimensions.get('window');
@@ -378,7 +379,7 @@ var ModalBox = React.createClass({
   render: function() {
     var visible     = this.state.isOpen || this.state.isAnimateOpen || this.state.isAnimateClose;
     var size        = {height: this.state.containerHeight, width: this.state.containerWidth};
-    var offsetX     = (this.state.containerWidth - this.state.width) / 2;
+    var offsetX     = (this.state.containerWidth - this.state.width) / (I18nManager.isRTL ? -2 : 2);
     var backdrop    = this.renderBackdrop(size);
 
     if (!visible) return <View/>
