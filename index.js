@@ -13,7 +13,8 @@ var {
   BackHandler,
   Platform,
   Modal,
-  Keyboard
+  Keyboard,
+  I18nManager
 } = require('react-native');
 
 var BackButton = BackHandler || BackAndroid;
@@ -415,7 +416,7 @@ var ModalBox = React.createClass({
 
   renderContent() {
     var size    = {height: this.state.containerHeight, width: this.state.containerWidth};
-    var offsetX = (this.state.containerWidth - this.state.width) / 2;
+    var offsetX = (this.state.containerWidth - this.state.width) / (I18nManager.isRTL ? -2 : 2);
 
     return (
       <Animated.View
